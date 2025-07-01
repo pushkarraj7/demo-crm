@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background-color: #fafbfc;
+}
+
+.review-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.review-form {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.form-box {
+  width: 100%;
+  max-width: 360px;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.login-review-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.review-illustration img {
+  width: 160px;
+  height: auto;
+  margin: 10px 0;
+}
+
+.instruction-text {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+.email-text {
+  font-size: 15px;
+  font-weight: bold;
+  color: #222;
+}
+
+.disabled-btn {
+  background-color: #e4e4e4;
+  color: #555;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: not-allowed;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.resend-link {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #f25423;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.resend-link:hover {
+  text-decoration: underline;
+}
+
+/* Right side background visual */
+.review-visual {
+  flex: 1;
+  position: relative;
+  background: url("../img/axismobi/REMS DASHBOARD/r1.png") center center
+    no-repeat;
+  background-size: contain;
+  display: none;
+  z-index: 1;
+}
+
+/* Gray overlay */
+.review-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Light gray overlay */
+  z-index: 1;
+}
+
+/* Foreground image */
+.review-visual::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 400px;
+  background: url("../img/axismobi/photos/crm-free.png") no-repeat center;
+  background-size: contain;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+@media screen and (min-width: 768px) {
+  .review-visual {
+    display: block;
+  }
+}

@@ -1,0 +1,263 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  background-color: #f7f7f7;
+}
+
+.signup-container {
+  display: flex;
+  width: 100%;
+}
+
+/* Outer form container */
+.signup-form {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fafbfc;
+  padding: 20px;
+}
+
+/* Inner card box */
+.form-box {
+  width: 100%;
+  max-width: 400px;
+  background-color: #ffffff;
+  padding: 48px;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* Logo */
+.logo {
+  text-align: center;
+}
+
+.logo img {
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+/* Title */
+.form-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+}
+
+/* Input field wrapper */
+.input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-box input,
+.password-wrapper input {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 15px;
+  padding: 14px 16px;
+  transition: 0.3s ease;
+}
+
+.input-box input:focus,
+.password-wrapper input:focus {
+  border-color: #f25423;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(242, 84, 35, 0.1);
+}
+
+/* Disabled input (like email) */
+#email-input {
+  background-color: #eee;
+  color: #666;
+  cursor: not-allowed;
+}
+
+/* Password container */
+.password-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  padding: 14px 40px 14px 16px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #999;
+  font-size: 16px;
+}
+
+/* Password rules */
+.password-rules {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.password-rules li {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #d93025;
+}
+
+.password-rules .valid {
+  color: #34a853;
+}
+
+.error-message {
+  display: none;
+  font-size: 13px;
+  color: #d93025;
+  margin-top: 5px;
+}
+
+/* Terms */
+.terms {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.terms a {
+  color: #f25423;
+  text-decoration: none;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
+
+/* Signup button */
+.signup-btn {
+  background: linear-gradient(90deg, #f25423, #ff7433);
+  padding: 14px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.3s ease;
+}
+
+.signup-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(242, 84, 35, 0.3);
+}
+
+/* Social buttons */
+.login-signup-oauth-button {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  gap: 12px;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: #444;
+  transition: all 0.2s ease;
+}
+
+.login-signup-oauth-button:hover {
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+/* OR separator */
+.or {
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+  position: relative;
+  margin: 10px 0;
+}
+
+.or::before,
+.or::after {
+  content: "";
+  height: 1px;
+  background: #ccc;
+  width: 40%;
+  position: absolute;
+  top: 50%;
+}
+
+.or::before {
+  left: 0;
+}
+
+.or::after {
+  right: 0;
+}
+
+/* Right visual */
+.signup-visual {
+  flex: 1;
+  position: relative;
+  background: url("../img/axismobi/REMS DASHBOARD/r1.png") center center
+    no-repeat;
+  background-size: contain;
+  display: none;
+  z-index: 1;
+}
+
+.signup-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.signup-visual::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 400px;
+  background: url("../img/axismobi/photos/crm-free.png") no-repeat center;
+  background-size: contain;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+@media screen and (min-width: 768px) {
+  .signup-visual {
+    display: block;
+  }
+}

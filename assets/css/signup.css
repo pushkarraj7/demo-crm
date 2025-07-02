@@ -7,19 +7,20 @@
 
 body {
   display: flex;
-  height: 100vh;
+  /* height: 100vh; */
+  /* background-color: #783434; */
   background-color: #f7f7f7;
 }
 
 .signup-container {
   display: flex;
+  flex-direction: row-reverse; /* Reverses the layout */
   width: 100%;
 }
 
 /* Outer form container */
 .signup-form {
-  width: 100%;
-  max-width: 500px;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,7 +31,7 @@ body {
 /* Inner card box */
 .form-box {
   width: 100%;
-  max-width: 360px;
+  max-width: 80%;
   background-color: #ffffff;
   padding: 40px;
   border-radius: 16px;
@@ -52,13 +53,33 @@ body {
 
 /* Title */
 .form-title {
-  font-size: 15px;
-  font-weight: 600;
-  color: #333;
+  font-size: 35px;
+  font-weight: 800;
   text-align: center;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(90deg, #f25423, #ff7433);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; /* Fallback for other browsers */
+  color: transparent; /* Fallback */
 }
 
-/* Social buttons */
+/* Button Row - Google & Microsoft buttons */
+.button-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.button-row .login-signup-oauth-button {
+  flex: 1;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Social button style */
 .login-signup-oauth-button {
   display: flex;
   background: #fff;
@@ -66,15 +87,18 @@ body {
   border-radius: 3px;
   width: 100%;
   font-size: 14px;
-  padding-left: 11px;
   font-weight: bold;
   color: #5a5a5a;
   align-items: center;
-  gap: 65px;
-  margin-bottom: 10px;
+  padding: 0 16px;
   cursor: pointer;
   height: 40px;
   box-shadow: rgba(100, 100, 100, 0.1) 0 2px 8px 0;
+  transition: 0.3s ease;
+}
+
+.login-signup-oauth-button:hover {
+  box-shadow: rgba(100, 100, 100, 0.15) 0 4px 10px;
 }
 
 /* OR separator */
@@ -104,20 +128,77 @@ body {
   right: 0;
 }
 
-/* Input field */
-.input-box input {
+/* Form Field Rows */
+.input-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.input-row .input-box {
+  flex: 1;
+}
+
+/* Individual input wrapper */
+.input-box {
+  margin-bottom: 12px;
+}
+
+/* Input styling */
+.input-box input,
+.input-box textarea {
   width: 100%;
   padding: 12px 16px;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 14px;
   transition: border-color 0.3s ease;
+  font-family: inherit;
+  resize: none;
 }
 
-.input-box input:focus {
+/* Focus effect for inputs */
+.input-box input:focus,
+.input-box textarea:focus {
   border-color: #f25423;
   outline: none;
   box-shadow: 0 0 0 3px rgba(242, 84, 35, 0.2);
+}
+
+.input-box select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  background-color: #fff;
+  appearance: none;
+}
+.choices__inner {
+  background: white !important;
+}
+
+.choices__list--dropdown .choices__item {
+  border-bottom: 1px solid #eee;
+  padding: 8px 10px;
+  transition: background 0.2s;
+}
+
+.choices__list--dropdown .choices__item:hover {
+  background: #f9f9f9;
+}
+
+.choices__inner {
+  min-height: 45px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.choices[data-type*="select-one"] .choices__inner {
+  padding-right: 30px;
 }
 
 /* Terms */
@@ -125,6 +206,7 @@ body {
   font-size: 12px;
   color: #666;
   line-height: 1.5;
+  text-align: center;
 }
 
 .terms a {
@@ -138,6 +220,8 @@ body {
 
 /* Signup button */
 .signup-btn {
+  margin: 10px auto 0;
+  display: block;
   background: linear-gradient(90deg, #f25423, #ff7433);
   padding: 14px;
   border-radius: 30px;
@@ -147,6 +231,7 @@ body {
   cursor: pointer;
   color: #fff;
   transition: 0.3s ease;
+  width: 80%;
 }
 
 .signup-btn:hover {
@@ -154,48 +239,58 @@ body {
   box-shadow: 0 6px 16px rgba(242, 84, 35, 0.3);
 }
 
-.signup-visual {
-  flex: 1;
-  position: relative;
-  background: url("../img/axismobi/REMS DASHBOARD/r1.png") center center
-    no-repeat;
-  background-size: contain;
-  display: none;
-  z-index: 1;
-}
+@media screen and (max-width: 600px) {
+  .input-row {
+    flex-direction: column;
+  }
 
-/* Gray overlay */
-.signup-visual::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* 20% dark overlay */
-  z-index: 1;
-}
+  .button-row {
+    flex-direction: column;
+  }
 
-/* Foreground image (on top of overlay) */
-.signup-visual::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 500px;
-  height: 400px;
-  background: url("../img/axismobi/photos/crm-free.png") no-repeat center;
-  background-size: contain;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-}
-
-@media screen and (min-width: 768px) {
-  .signup-visual {
-    display: block;
+  .button-row .login-signup-oauth-button {
+    width: 100%;
   }
 }
 
+/* Error Message */
 .error-message {
   margin-top: 6px;
   font-size: 13px;
   color: #d93025;
   display: none;
+}
+
+.features-section {
+  width: 360px;
+  padding: 20px;
+  background-color: #f5f7fa;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+}
+
+.feature-group {
+  margin-bottom: 25px;
+}
+
+.feature-group h4 {
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+  border-left: 4px solid #ff7433;
+  padding-left: 8px;
+}
+
+.feature-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  color: #333;
 }

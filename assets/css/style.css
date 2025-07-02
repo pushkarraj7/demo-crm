@@ -6616,6 +6616,11 @@ hr {
   transition: all 0.3s ease;
 }
 
+/* When sticky header is active — change to black */
+.cs-site_header.cs-style2.cs-sticky-active .cs-hamburger span {
+  background-color: #000; /* or use #111 or #222 for better contrast */
+}
+
 /* Optional subtle size variation for lines */
 .cs-hamburger span:nth-child(2) {
   width: 30px;
@@ -6647,6 +6652,7 @@ hr {
   -webkit-box-shadow: 0px 10px 40px 0px rgba(59, 20, 0, 0.1);
           box-shadow: 0px 10px 40px 0px rgba(59, 20, 0, 0.1);
   position: relative;
+  cursor: pointer;
 }
 .cs-toolbox_btn span {
   position: relative;

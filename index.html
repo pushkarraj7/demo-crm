@@ -37,7 +37,7 @@
       <div class="cs-preloader_bg cs-center cs-accent_4_bg">
         <div class="cs-preloader_in cs-accent_15_border">
           <img
-            src="https://multim-html.vercel.app/assets/img/saas/logo_mini.svg"
+            src="assets\img\axismobi\photos\logo.png"
             alt="Logo"
           />
         </div>
@@ -56,85 +56,24 @@
                   <span></span>
                   <span></span>
                 </div>
-                <!-- <span class="cs-hamburger_text">Menu</span> -->
               </div>
-              <!-- <div class="cs-nav_wrap">
-                <div class="cs-nav_overlay cs-accent_bg_2"></div>
-                <div class="cs-nav">
-                  <ul class="cs-nav_list">
-                    <li class="current-menu-item">
-                      <a href="index.html">Home</a>
-                    </li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="service.html">Service</a></li>
-                    <li class="menu-item-has-children">
-                      <a href="#">Pages</a>
-                      <ul>
-                        <li><a href="testimonial.html">Testimonial</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="404.html">Error Page</a></li>
-                        <li><a href="coming-soon.html">Coming Soon</a></li>
-                      </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                      <a href="blog.html">Blogs</a>
-                      <ul>
-                        <li><a href="blog.html">Blog List</a></li>
-                        <li><a href="blog-details.html">Blog Details 1</a></li>
-                        <li>
-                          <a href="blog-details-2.html">Blog Details 2</a>
-                        </li>
-                        <li>
-                          <a href="blog-details-3.html">Blog Details 3</a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-                <div class="cs-nav_toolbox text-center">
-                  <div class="cs-social_btns cs-style1 cs-center">
-                    <a
-                      href="#"
-                      class="cs-accent_bg cs-white_hover cs-accent_color_hover cs-white_bg_hover"
-                      ><i class="fab fa-facebook-f"></i
-                    ></a>
-                    <a
-                      href="#"
-                      class="cs-accent_bg cs-white_hover cs-accent_color_hover cs-white_bg_hover"
-                      ><i class="fab fa-twitter"></i
-                    ></a>
-                    <a
-                      href="#"
-                      class="cs-accent_bg cs-white_hover cs-accent_color_hover cs-white_bg_hover"
-                      ><i class="fab fa-instagram"></i
-                    ></a>
-                    <a
-                      href="#"
-                      class="cs-accent_bg cs-white_hover cs-accent_color_hover cs-white_bg_hover"
-                      ><i class="fab fa-pinterest-p"></i
-                    ></a>
-                  </div>
-                  <div class="cs-height_20 cs-height_lg_5"></div>
-                  <ul class="cs-mp0 cs-secondary_font">
-                    <li>hello@axismobi.com</li>
-                    <li>+012 3456 7890</li>
-                  </ul>
-                </div>
-              </div> -->
             </div>
             <div class="cs-main_header_center">
-              <a class="cs-site_branding" href="index.html"
-                ><img src="../assets/img/axismobi/photos/logo.png" alt="Logo"
-              /></a>
+              <a class="cs-site_branding" href="index.html">
+                <img
+                  id="site-logo"
+                  src="../assets/img/axismobi/photos/logo2.png"
+                  alt="Logo"
+                />
+              </a>
             </div>
+
             <div class="cs-main_header_right">
               <div class="cs-toolbox cs-center">
                 <a
-                  href="#demo-section"
                   class="cs-toolbox_btn cs-accent_bg cs-white_bg_hover cs-accent_color_hover cs-accent_color_2_hover cs-rounded"
                 >
-                  <span id="get-demo-btn">Get Demo</span>
+                  <span id="try-crm-btn">Try CRM for free</span>
                 </a>
               </div>
               <div class="cs-search_wrap">
@@ -300,7 +239,7 @@
         </div>
       </div>
 
-      <!-- Marketing Automation Cards -->
+      <!-- Finance Dashboard Cards -->
       <div class="cards card-section" id="marketing">
         <div class="card">
           <input type="checkbox" class="card-check" />
@@ -347,7 +286,7 @@
         </div>
       </div>
 
-      <!-- Support and Ticketing Cards -->
+      <!-- Real Estate Management System Cards -->
       <div class="cards card-section" id="support">
         <div class="card">
           <input type="checkbox" class="card-check" />
@@ -415,7 +354,9 @@
       <!-- CTA Buttons -->
       <div class="buttons">
         <button class="btn primary" id="get-demo-btn">Get Demo</button>
-        <button class="btn outline" id="try-crm-btn">Try CRM for free</button>
+        <button class="btn primary" id="next-btn" style="display: none">
+          Next
+        </button>
       </div>
     </div>
     <!-- End Section -->
@@ -2892,136 +2833,213 @@
     <script src="../assets/js/plugins/jquery.counter.min.js"></script>
     <script src="../assets/js/plugins/wow.min.js"></script>
     <script src="../assets/js/main.js"></script>
-    <!-- JS to handle tab switching -->
     <script>
-      // ✅ Correct startAutoSlide (with thumbnails)
-      function startAutoSlide(carousel) {
-        const track = carousel.querySelector(".carousel-track");
-        const slides = track.querySelectorAll("img");
-        const thumbs = carousel.querySelectorAll(".thumbnail-track img");
-        let index = 0;
+      document.addEventListener("DOMContentLoaded", function () {
+        const tabs = document.querySelectorAll(".tab");
+        const cardSections = document.querySelectorAll(".card-section");
+        const galleryTabs = document.querySelectorAll(".gallery-tab");
+        const galleryCarousels = document.querySelectorAll(".gallery-carousel");
+        const apiCards = document.querySelectorAll(".api-card");
+        const checkboxes = document.querySelectorAll(".card-check");
+        const nextBtn = document.getElementById("next-btn");
 
-        function updateSlide(idx) {
-          track.style.transform = `translateX(-${idx * 100}%)`;
-          thumbs.forEach((thumb, i) => {
-            thumb.classList.toggle("active-thumb", i === idx);
+        // Header logo switch
+        const header = document.querySelector(".cs-site_header.cs-style2");
+        const logo = document.getElementById("site-logo");
+        window.addEventListener("scroll", () => {
+          if (header.classList.contains("cs-sticky-active")) {
+            logo.src = "../assets/img/axismobi/photos/logo.png";
+          } else {
+            logo.src = "../assets/img/axismobi/photos/logo2.png";
+          }
+        });
+
+        // Tab switching
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            tabs.forEach((t) =>
+              t.classList.remove(
+                "active",
+                "crm-active",
+                "marketing-active",
+                "support-active"
+              )
+            );
+            cardSections.forEach((section) =>
+              section.classList.remove("active")
+            );
+
+            const tabId = tab.dataset.tab;
+            tab.classList.add("active");
+
+            if (tabId === "crm") tab.classList.add("crm-active");
+            else if (tabId === "marketing")
+              tab.classList.add("marketing-active");
+            else if (tabId === "support") tab.classList.add("support-active");
+
+            document.getElementById(tabId).classList.add("active");
           });
+        });
+
+        // API card toggle
+        apiCards.forEach((card) => {
+          card.addEventListener("click", () => {
+            card.classList.toggle("open");
+          });
+        });
+
+        // 🔁 Update selected features in sessionStorage
+        function updateSelectedFeaturesInSession() {
+          const selectedTitles = Array.from(
+            document.querySelectorAll(".card-check:checked")
+          ).map((checkbox) => {
+            const titleElement = checkbox
+              .closest(".card")
+              .querySelector(".card-title");
+            return titleElement ? titleElement.innerText.trim() : "";
+          });
+          sessionStorage.setItem(
+            "selectedFeatures",
+            JSON.stringify(selectedTitles)
+          );
         }
 
-        clearInterval(activeInterval);
-        updateSlide(index);
+        // 🔁 Show/hide Next button
+        function toggleNextButton() {
+          const anyChecked =
+            document.querySelectorAll(".card-check:checked").length > 0;
+          nextBtn.style.display = anyChecked ? "inline-block" : "none";
+          updateSelectedFeaturesInSession(); // 🔁 Store whenever state changes
+        }
 
-        activeInterval = setInterval(() => {
-          index = (index + 1) % slides.length;
-          updateSlide(index);
-        }, 3000);
+        // 🔁 Restore checked state from sessionStorage
+        const savedSelections = JSON.parse(
+          sessionStorage.getItem("selectedFeatures") || "[]"
+        );
+        document.querySelectorAll(".card").forEach((card) => {
+          const titleElement = card.querySelector(".card-title");
+          const checkbox = card.querySelector(".card-check");
+          if (
+            titleElement &&
+            savedSelections.includes(titleElement.innerText.trim())
+          ) {
+            checkbox.checked = true;
+          }
 
-        // Thumbnail click sync
-        thumbs.forEach((thumb, i) => {
-          thumb.addEventListener("click", () => {
-            clearInterval(activeInterval);
-            index = i;
-            updateSlide(index);
-            startAutoSlide(carousel); // restart timer
+          // Card click toggles checkbox (unless clicking checkbox directly)
+          card.addEventListener("click", (e) => {
+            if (!e.target.classList.contains("card-check")) {
+              // 🔁 Enforce single-tab selection
+              const currentTab = card.closest(".card-section");
+              const currentTabId = currentTab ? currentTab.id : null;
+              const selectedTabId = sessionStorage.getItem("selectedTabId");
+
+              if (selectedTabId && selectedTabId !== currentTabId) {
+                // Clear previous tab selections
+                document
+                  .querySelectorAll(".card-check")
+                  .forEach((cb) => (cb.checked = false));
+              }
+
+              // Toggle current checkbox
+              checkbox.checked = !checkbox.checked;
+
+              // Save current tab as selected
+              sessionStorage.setItem("selectedTabId", currentTabId);
+
+              // Trigger change event to update button + session
+              checkbox.dispatchEvent(new Event("change", { bubbles: true }));
+            }
+          });
+
+          // Checkbox change listener
+          checkbox.addEventListener("change", toggleNextButton);
+        });
+
+        toggleNextButton(); // Initial check on load
+
+        // Auto slide for carousels
+        let activeInterval = null;
+        const firstCarousel = document.querySelector(
+          ".gallery-carousel.active"
+        );
+        if (firstCarousel) startAutoSlide(firstCarousel);
+
+        galleryTabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            galleryTabs.forEach((t) => t.classList.remove("active"));
+            galleryCarousels.forEach((carousel) =>
+              carousel.classList.remove("active")
+            );
+
+            tab.classList.add("active");
+            const target = tab.dataset.target;
+            const targetCarousel = document.getElementById(target);
+
+            if (targetCarousel) {
+              targetCarousel.classList.add("active");
+              const track = targetCarousel.querySelector(".carousel-track");
+              if (track) track.style.transform = `translateX(0%)`;
+              startAutoSlide(targetCarousel);
+            }
           });
         });
-      }
 
-      // CRM / Marketing / Support Tabs
-      const tabs = document.querySelectorAll(".tab");
-      const cardSections = document.querySelectorAll(".card-section");
+        function startAutoSlide(carousel) {
+          const track = carousel.querySelector(".carousel-track");
+          const slides = track.querySelectorAll("img");
+          const thumbs = carousel.querySelectorAll(".thumbnail-track img");
+          let index = 0;
 
-      tabs.forEach((tab) => {
-        tab.addEventListener("click", () => {
-          tabs.forEach((t) =>
-            t.classList.remove(
-              "active",
-              "crm-active",
-              "marketing-active",
-              "support-active"
-            )
-          );
-          cardSections.forEach((section) => section.classList.remove("active"));
-
-          const tabId = tab.dataset.tab;
-          tab.classList.add("active");
-
-          if (tabId === "crm") tab.classList.add("crm-active");
-          else if (tabId === "marketing") tab.classList.add("marketing-active");
-          else if (tabId === "support") tab.classList.add("support-active");
-
-          document.getElementById(tabId).classList.add("active");
-        });
-      });
-
-      // Toggle checkbox inside card on card click
-      document.querySelectorAll(".card").forEach((card) => {
-        card.addEventListener("click", (e) => {
-          if (e.target.tagName.toLowerCase() !== "input") {
-            const checkbox = card.querySelector(".card-check");
-            if (checkbox) checkbox.checked = !checkbox.checked;
+          function updateSlide(idx) {
+            track.style.transform = `translateX(-${idx * 100}%)`;
+            thumbs.forEach((thumb, i) => {
+              thumb.classList.toggle("active-thumb", i === idx);
+            });
           }
-        });
-      });
 
-      // Dashboard Gallery Tabs
-      const galleryTabs = document.querySelectorAll(".gallery-tab");
-      const galleryCarousels = document.querySelectorAll(".gallery-carousel");
-      let activeInterval = null;
+          clearInterval(activeInterval);
+          updateSlide(index);
 
-      // Start auto slide for first carousel
-      const firstCarousel = document.querySelector(".gallery-carousel.active");
-      if (firstCarousel) startAutoSlide(firstCarousel);
+          activeInterval = setInterval(() => {
+            index = (index + 1) % slides.length;
+            updateSlide(index);
+          }, 3000);
 
-      // Tab switching logic
-      galleryTabs.forEach((tab) => {
-        tab.addEventListener("click", () => {
-          galleryTabs.forEach((t) => t.classList.remove("active"));
-          galleryCarousels.forEach((carousel) =>
-            carousel.classList.remove("active")
-          );
-
-          tab.classList.add("active");
-          const target = tab.dataset.target;
-          const targetCarousel = document.getElementById(target);
-
-          if (targetCarousel) {
-            targetCarousel.classList.add("active");
-
-            const track = targetCarousel.querySelector(".carousel-track");
-            if (track) track.style.transform = `translateX(0%)`;
-            startAutoSlide(targetCarousel);
-          }
-        });
-      });
-
-      document.querySelectorAll(".api-card").forEach((card) => {
-        card.addEventListener("click", () => {
-          card.classList.toggle("open");
-        });
+          thumbs.forEach((thumb, i) => {
+            thumb.addEventListener("click", () => {
+              clearInterval(activeInterval);
+              index = i;
+              updateSlide(index);
+              startAutoSlide(carousel);
+            });
+          });
+        }
       });
     </script>
 
     <script>
-      // Video Modal Logic
-      const demoBtn = document.getElementById("get-demo-btn");
-      const modal = document.getElementById("demoModal");
-      const closeModal = document.querySelector(".modal .close");
+            // Video Modal Logic
+            const demoBtn = document.getElementById("get-demo-btn");
+            const modal = document.getElementById("demoModal");
+            const closeModal = document.querySelector(".modal .close");
 
-      demoBtn.addEventListener("click", () => {
-        modal.style.display = "flex";
-      });
+            demoBtn.addEventListener("click", () => {
+              modal.style.display = "flex";
+            });
 
-      closeModal.addEventListener("click", () => {
-        modal.style.display = "none";
-        // Stop video playback
-        modal.querySelector("iframe").src = modal.querySelector("iframe").src;
-      });
+            closeModal.addEventListener("click", () => {
+              modal.style.display = "none";
+              // Stop video playback
+              modal.querySelector("iframe").src = modal.querySelector("iframe").src;
+            });
 
-      // Try CRM Button
-      document.getElementById("try-crm-btn").addEventListener("click", () => {
-        window.open("/saas-landing/signup.html", "_blank");
-      });
+            // Next Button
+            document.getElementById("next-btn").addEventListener("click", () => {
+              window.open("/pages/signup.html", "_blank");
+                // Navigate in the same tab
+                // window.location.href = "/pages/signup.html";
+            });
     </script>
 
     <!--API Integration-->
